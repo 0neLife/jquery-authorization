@@ -2,7 +2,7 @@
 
 #### Author: http://www.yubutsan.com.ua/
 
-<img align="right" src="https://github.com/0neLife/jquery-authorization/blob/master/app/img/demo-logo.png" hspace="20" vspace="10" width="90%">
+<img src="https://github.com/0neLife/jquery-authorization/blob/master/app/img/demo-logo.png" width="100%">  
 
 Run
 -----------
