@@ -3,6 +3,7 @@
 #### Author: http://www.yubutsan.com.ua/
 
 <img align="right" src="https://github.com/0neLife/jquery-authorization/blob/master/app/img/demo-logo.png" hspace="20" vspace="10" width="90%">
+
 Run
 -----------
 ```
@@ -25,14 +26,13 @@ Dependencies list
 -----------
 ```
 "gulp"
-"gulp-sass"
-"gulp-cssnano"
+"browser-sync"
 "gulp-autoprefixer"
 "gulp-imagemin"
-"gulp-concat"
-"gulp-uglify"
-"browser-sync"
+"gulp-minify-css"
 "gulp-rename"
+"gulp-sass"
+"gulp-uglify"
+"imagemin-mozjpeg"
+"node-bourbon"
 ```
-
-
