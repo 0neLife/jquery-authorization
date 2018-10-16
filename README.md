@@ -4,7 +4,7 @@
 
 A custom application on how to setup a authorization page using jQuery, hosted [REST-API](https://reqres.in/) for AJAX requests, HTTP authentication (validation input fields with disabled button form) and set/get received token in the sessionStorage.
 
-<img src="https://github.com/0neLife/jquery-authorization/blob/master/app/img/demo-logo.png" width="100%">  
+<img src="https://github.com/0neLife/jquery-http-auth/blob/master/app/img/demo-logo1.png" width="100%">  
 
 Run
 -----------
