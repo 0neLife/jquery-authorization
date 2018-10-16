@@ -36,3 +36,19 @@ Dependencies list
 "imagemin-mozjpeg"
 "node-bourbon"
 ```
+
+Basic authentication
+-----------
+```
+{
+  "email":    "peter@klaven",
+  "password": "cityslicka"
+}
+```
+
+Technical implementation API
+-----------
+```
+Login POST
+https://reqres.in/api/login/(with Basic authentication)
+```
