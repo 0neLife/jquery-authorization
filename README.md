@@ -1,4 +1,4 @@
-# jquery-authorization
+# jquery-http-auth
 
 #### Author: http://www.yubutsan.com.ua/
 
