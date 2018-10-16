@@ -1,6 +1,50 @@
-$(document).ready(function(){	
+$(document).ready(function(){
 
-//Выполняем асинхронный HTTP запрос на авторизацию пользователя
+	var valid = 0;
+	$("#login-form button").prop("disabled", true);
+
+	$('input#email, input#password').unbind().blur( function(){
+		var id 	= $(this).attr('id'),
+			 	val = $(this).val();
+
+	  switch(id)
+	  {
+			case ('email'):
+				var validatorsPattern = /.+?\@.+/g;
+				$(this).removeClass('valid');
+				if(val == '') {
+						$(this).nextAll('.error-message').addClass('active')
+																						 .html('*Email is required');
+				} else if(!validatorsPattern.test(val)) {
+						$(this).nextAll('.error-message').addClass('active')
+																						 .html('*Valid mail must contain letters before and after @');												
+				} else {
+						$(this).nextAll('.error-message').removeClass('active').html('');
+						valid = valid + 1;
+				}
+			break;
+
+			case 'password':
+				var validatorsPattern 	= /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).+/,
+						validatorsMinLength = val.length;
+				if(val == '') {
+						$(this).nextAll('.error-message').addClass('active')
+																						 .html('*Password is required');
+				} else if(validatorsMinLength < 5) {
+						$(this).nextAll('.error-message').addClass('active')
+																						 .html('*Password must be at least 5 characters long');
+				} else if(!validatorsPattern.test(val)) {
+						$(this).nextAll('.error-message').addClass('active')
+																						 .html('*Your password must contain at least one uppercase, one lowercase, and one number');												
+				} else {
+						$(this).nextAll('.error-message').removeClass('active');
+						valid = valid + 1;
+				}
+			break;
+	 	}
+	 	(valid == 2) ? $("form#login-form button").prop("disabled", false) : '';
+	});
+
 	$('form#login-form').on('submit', function(event) {
   	event.preventDefault();
 
@@ -11,10 +55,17 @@ $(document).ready(function(){
 	  	data: SERVICE.prepareAjaxData($(this).serializeArray()),
 			beforeSend: SERVICE.preloader(true),
 	    success: function(response){
-	      $('.wrapper').html('').load(homePage);
-	      localStorage.setItem('token', data.id_token);   
+	      console.log(response);   
+	      localStorage.setItem('accessToken', response.token);
+	      if (localStorage.getItem('accessToken') === response.token){	      	
+		      $('.wrapper').html('').load(homePage);
+		      console.log('tokens are the same');
+		      console.log(document);
+	      } else{
+	      	console.log('tokens are not the same');
+	      }
 	    },
-	    afterSend: setTimeout(function() { SERVICE.preloader(false) }, 3000)
+	    afterSend: setTimeout(function() { SERVICE.preloader(false) }, 2000)
 		});
 	});
 

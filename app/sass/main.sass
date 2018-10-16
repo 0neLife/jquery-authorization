@@ -32,6 +32,12 @@ button
 	cursor: pointer
 	background-color: transparent
 
+button[disabled]
+	background-color: rgba(0,0,0,.12)
+	box-shadow: none
+	&:hover
+		background: rgba(0,0,0,.12)
+
 .hidden
 	display: none
 .clrp
