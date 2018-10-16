@@ -56,11 +56,10 @@ $(document).ready(function(){
 			beforeSend: SERVICE.preloader(true),
 	    success: function(response){
 	      console.log(response);   
-	      localStorage.setItem('accessToken', response.token);
-	      if (localStorage.getItem('accessToken') === response.token){	      	
+	      sessionStorage.setItem('accessToken', response.token);
+	      if (sessionStorage.getItem('accessToken') === response.token){	      	
 		      $('.wrapper').html('').load(homePage);
 		      console.log('tokens are the same');
-		      console.log(document);
 	      } else{
 	      	console.log('tokens are not the same');
 	      }
