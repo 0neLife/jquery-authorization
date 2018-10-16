@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-	var valid = 0;
+	var validEmail 		= false,
+			validPassword = false;
 	$("#login-form button").prop("disabled", true);
 
 	$('input#email, input#password').unbind().blur( function(){
@@ -11,6 +12,8 @@ $(document).ready(function(){
 	  {
 			case ('email'):
 				var validatorsPattern = /.+?\@.+/g;
+				validEmail = false;
+
 				$(this).removeClass('valid');
 				if(val == '') {
 						$(this).nextAll('.error-message').addClass('active')
@@ -20,13 +23,14 @@ $(document).ready(function(){
 																						 .html('*Valid mail must contain letters before and after @');												
 				} else {
 						$(this).nextAll('.error-message').removeClass('active').html('');
-						valid = valid + 1;
+						validEmail = true;
 				}
 			break;
 
 			case 'password':
 				var validatorsPattern 	= /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).+/,
 						validatorsMinLength = val.length;
+						validPassword = false;
 				if(val == '') {
 						$(this).nextAll('.error-message').addClass('active')
 																						 .html('*Password is required');
@@ -38,11 +42,11 @@ $(document).ready(function(){
 																						 .html('*Your password must contain at least one uppercase, one lowercase, and one number');												
 				} else {
 						$(this).nextAll('.error-message').removeClass('active');
-						valid = valid + 1;
+						validPassword = true;
 				}
 			break;
 	 	}
-	 	(valid == 2) ? $("form#login-form button").prop("disabled", false) : '';
+	 	(validEmail && validPassword) ? $("form#login-form button").prop("disabled", false) : $("form#login-form button").prop("disabled", true);
 	});
 
 	$('form#login-form').on('submit', function(event) {
