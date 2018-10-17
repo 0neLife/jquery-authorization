@@ -2,7 +2,7 @@
 
 #### Author: http://www.yubutsan.com.ua/
 
-A custom application on how to setup a authorization page using jQuery, hosted [REST-API](https://reqres.in/) for AJAX requests, HTTP authentication (validation input fields with disabled button form), using Token in the sessionStorage, preloader and pleasent material design for all UI components.
+A custom application on how to setup an authorization page using jQuery, hosted [REST-API](https://reqres.in/) for AJAX requests, HTTP authentication (validation input fields with disabled button form), using Token in the sessionStorage, preloader and pleasent material design for all UI components.
 
 <img src="https://github.com/0neLife/jquery-http-auth/blob/master/app/img/demo-logo1.png" width="100%">  
 
