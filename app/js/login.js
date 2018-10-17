@@ -55,7 +55,7 @@ $(document).ready(function(){
   	if (window.navigator.onLine){
   		SERVICE.networkStatus(true);
 	  	$.ajax({
-		    url:  'https://reqres.in/api/login',
+		    url:  'https://reqres.in.in/api/login',
 		    type:'POST',
 		    dataType : 'json',
 		  	data: SERVICE.prepareAjaxData($(this).serializeArray()),
@@ -90,7 +90,7 @@ $(document).ready(function(){
 	        } else {
 	            msg = 'Uncaught Error.\n' + jqXHR.responseJSON+'!';
 	        }  			
-        // $('#post').html(msg);
+        	SERVICE.errorMsg(true, msg);
     		}
 			});
   	}else {
