@@ -53,6 +53,7 @@ $(document).ready(function(){
   	e.preventDefault();
 
   	if (window.navigator.onLine){
+  		SERVICE.networkStatus(true);
 	  	$.ajax({
 		    url:  'https://reqres.in/api/login',
 		    type:'POST',
