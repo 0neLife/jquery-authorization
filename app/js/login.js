@@ -49,27 +49,52 @@ $(document).ready(function(){
 	 	(validEmail && validPassword) ? $("form#login-form button").prop("disabled", false) : $("form#login-form button").prop("disabled", true);
 	});
 
-	$('form#login-form').on('submit', function(event) {
-  	event.preventDefault();
+	$('form#login-form').on('submit', function(e) {
+  	e.preventDefault();
 
-  	$.ajax({
-	    url:  'https://reqres.in/api/login',
-	    type:'POST',
-	    dataType : 'json',
-	  	data: SERVICE.prepareAjaxData($(this).serializeArray()),
-			beforeSend: SERVICE.preloader(true),
-	    success: function(response){
-	      console.log(response);   
-	      sessionStorage.setItem('accessToken', response.token);
-	      if (sessionStorage.getItem('accessToken') === response.token){	      	
-		      $('.wrapper').html('').load(homePage);
-		      console.log('tokens are the same');
-	      } else{
-	      	console.log('tokens are not the same');
-	      }
-	    },
-	    afterSend: setTimeout(function() { SERVICE.preloader(false) }, 2000)
-		});
+  	if (window.navigator.onLine){
+	  	$.ajax({
+		    url:  'https://reqres.in/api/login',
+		    type:'POST',
+		    dataType : 'json',
+		  	data: SERVICE.prepareAjaxData($(this).serializeArray()),
+				beforeSend: function(jqXHR, settings){},
+		    success: function(response, textStatus, jqXHR){
+		    	SERVICE.preloader(true)
+					if (jqXHR.readyState === 4 && jqXHR.status === 200){
+						var type = jqXHR.getResponseHeader('Content-Type');
+						if(type === 'application/json; charset=utf-8'){
+							sessionStorage.setItem('accessToken', response.token);	      	
+						  $('.wrapper').html('').load(homePage);
+						  setTimeout(function() { SERVICE.preloader(false) }, 2000);					
+						}
+					}
+		    },
+		    error: function (jqXHR, textStatus) {
+	        var msg = '';
+	        if (jqXHR.status === 0) {
+	            msg = 'Request is invalid. The browser refused to honor the request.\n'
+	            			+'Make sure that your server is sending the appropriate Access-Control-'
+	            			+'headers with each request.';
+	        } else if (jqXHR.status == 404) {
+	            msg = 'Requested page not found! #[404]';
+	        } else if (jqXHR.status == 500) {
+	            msg = 'Internal Server Error! #[500].';
+	        } else if (textStatus === 'parsererror') {
+	            msg = 'Requested JSON parse failed!';
+	        } else if (textStatus === 'timeout') {
+	            msg = 'Time out error!';
+	        } else if (textStatus === 'abort') {
+	            msg = 'Ajax request aborted!';
+	        } else {
+	            msg = 'Uncaught Error.\n' + jqXHR.responseJSON+'!';
+	        }  			
+        // $('#post').html(msg);
+    		}
+			});
+  	}else {
+  		SERVICE.networkStatus(false);
+  		console.log('network aren\'t available');
+  	}
 	});
-console.log(this);
 });

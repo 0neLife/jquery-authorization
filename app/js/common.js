@@ -13,6 +13,10 @@
 	SERVICE.preloader = function(status){
 		$('#preloader').attr('class',(status ? 'active':''));
 	};
+
+	SERVICE.networkStatus = function(status){
+		$('.pulse.slash').attr('class',(status ? 'pulse slash' : 'pulse slash active'));
+	};
 }());
 
 var loginPage = 'login.html',
@@ -21,4 +25,3 @@ var loginPage = 'login.html',
 $(document).ready(function(){
 	 $('.wrapper').html('').load(loginPage);
 });
-console.log(window.navigator.connection);
