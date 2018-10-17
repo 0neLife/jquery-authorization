@@ -13,7 +13,6 @@
 	SERVICE.preloader = function(status){
 		$('#preloader').attr('class',(status ? 'active':''));
 	};
-
 }());
 
 var loginPage = 'login.html',
@@ -22,3 +21,4 @@ var loginPage = 'login.html',
 $(document).ready(function(){
 	 $('.wrapper').html('').load(loginPage);
 });
+console.log(window.navigator.connection);
