@@ -5,3 +5,35 @@
 		position: relative
 		z-index: $ind_S
 		cursor: default
+
+#popup-error-msg
+	.popup-title
+		position: relative
+		padding-bottom: 30px
+		color: $red
+		i
+			padding: 10px
+			font-size: 50px
+		&:after
+			@extend %extend_before
+			bottom: 14px
+			left: 50%
+			transform: translateX(-50%)
+			width: 20%
+			height: 1px
+			background-color: $greyLight
+	.error-msg
+		padding-bottom: 60px
+	.btn-main
+		position: absolute
+		bottom: 0
+		left: 0
+		height: 50px
+		line-height: 50px
+		display: flex
+		justify-content: center
+		i
+			line-height: 50px
+			font-size: 30px
+		span
+			font-size: 16px
