@@ -75,8 +75,8 @@ $(document).ready(function(){
 	        var msg = '';
 	        if (jqXHR.status === 0) {
 	            msg = 'Request is invalid. The browser refused to honor the request.\n'
-	            			+'Make sure that your server is sending the appropriate Access-Control-'
-	            			+'headers with each request.';
+	            		 +'Make sure that your server is sending the appropriate Access-Control-'
+	            		 +'headers with each request.';
 	        } else if (jqXHR.status == 404) {
 	            msg = 'Requested page not found! #[404]';
 	        } else if (jqXHR.status == 500) {
@@ -94,8 +94,10 @@ $(document).ready(function(){
     		}
 			});
   	}else {
+  		var msg = 'Network aren\'t available. Please, see your network connection!';
+			SERVICE.errorMsg(true, msg);
   		SERVICE.networkStatus(false);
-  		console.log('network aren\'t available');
+  		console.log('Network aren\'t available. Please, see your network connection!');
   	}
 	});
 });
