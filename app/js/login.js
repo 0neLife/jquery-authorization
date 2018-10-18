@@ -59,7 +59,7 @@ $(document).ready(function(){
 		    type:'POST',
 		    dataType : 'json',
 		  	data: SERVICE.prepareAjaxData($(this).serializeArray()),
-				beforeSend: function(jqXHR, settings){console.log(jqXHR);},
+				beforeSend: function(jqXHR, settings){console.log(window.location.href);},
 		    success: function(response, textStatus, jqXHR){
 					if (jqXHR.readyState === 4 && jqXHR.status === 200){
 				   	SERVICE.preloader(true);
