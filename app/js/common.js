@@ -17,8 +17,9 @@
 	SERVICE.networkStatus = function(status){
 		$('.pulse.slash').attr('class',(status ? 'pulse slash' : 'pulse slash active'));
 	};
+
 	SERVICE.errorMsg = function(status, message){
-		var elm = $('#popup-error-msg');
+		var elm = $('#popup-error-msg'); 
 		elm.find('.error-msg').html(message);
 		elm.find('.btn-main').click(function(){
 			elm.css('opacity','0').find('.popup-content').css('margin-top','150px');        

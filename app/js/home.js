@@ -1,3 +1,6 @@
 $(document).ready(function(){
-	// write code here
+	$('.flex-container .btn-main').on('click', function(){
+		$('.wrapper').html('').load(loginPage);
+		sessionStorage.clear();
+	});
 });
