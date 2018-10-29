@@ -22,9 +22,9 @@
 		var elm = $('#popup-error-msg'); 
 		elm.find('.error-msg').html(message);
 		elm.find('.btn-main').click(function(){
-			elm.css('opacity','0').find('.popup-content').css('margin-top','150px');        
+			elm.css('opacity','0').find('.popup-content').css({'margin-top':'150px', 'transform' : 'scale(0.9)'});        
 		setTimeout(function(){
-		  	elm.removeClass('active').css('opacity','').find('.popup-content').css('margin-top','');
+		  	elm.removeClass('active').css('opacity','').find('.popup-content').css({'margin-top':'', 'transform' : ''});
 			}, 400);
 		});
 		elm.attr('class',(status ? 'popup active' : 'popup'));
